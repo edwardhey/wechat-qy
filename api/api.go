@@ -4,8 +4,8 @@ import (
 	"encoding/json"
 	"net/url"
 
-	"github.com/heroicyang/wechat-crypter"
-	"github.com/heroicyang/wechat-qy/base"
+	"github.com/KonishiLee/wechat-crypter"
+	"github.com/KonishiLee/wechat-qy/base"
 )
 
 const (

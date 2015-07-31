@@ -12,16 +12,16 @@
 
 ## 安装
 ```bash
-$ go get -u github.com/heroicyang/wechat-qy
+$ go get -u github.com/KonishiLee/wechat-qy
 ```
 
-*安利一下通用的微信开放平台加解密库：[github.com/heroicyang/wechat-crypter](https://github.com/heroicyang/wechat-crypter)*
+*安利一下通用的微信开放平台加解密库：[github.com/KonishiLee/wechat-crypter](https://github.com/KonishiLee/wechat-crypter)*
 
 ## 使用
 
 ### 应用套件级别（适用于第三方应用提供商）
 ```go
-import "github.com/heroicyang/wechat-qy/suite"
+import "github.com/KonishiLee/wechat-qy/suite"
 
 wechatSuite := suite.New(suiteID, suiteSecret, suiteToken, suiteEncodingAESKey)
 
@@ -45,7 +45,7 @@ api := wechatSuite.NewAPI(corpID, permanentCode)
 
 ### 企业号级别（适用于企业自己开发应用）
 ```go
-import "github.com/heroicyang/wechat-qy/api"
+import "github.com/KonishiLee/wechat-qy/api"
 
 wechatAPI := api.New(corpID, corpSecret, token, encodingAESKey)
 
@@ -63,4 +63,4 @@ wechatAPI.PerformReplaceDepartmentTask(...)
 ```
 
 ## 文档
-[http://godoc.org/github.com/heroicyang/wechat-qy](http://godoc.org/github.com/heroicyang/wechat-qy)
+[http://godoc.org/github.com/KonishiLee/wechat-qy](http://godoc.org/github.com/KonishiLee/wechat-qy)
