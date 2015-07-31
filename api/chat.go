@@ -17,7 +17,7 @@ const (
 
 type Chat struct {
 	Name     string   `json: "name"`
-	Owner    int64    `json: "owner"`
+	Owner    string   `json: "owner"`
 	UserList []string `json:"userlist"`
 }
 
