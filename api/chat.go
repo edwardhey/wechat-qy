@@ -18,13 +18,13 @@ const (
 type Chat struct {
 	ChatId   string   `json:"chatid"`
 	Name     string   `json:"name"`
-	Owner    string   `json:"owner"`
-	UserList []string `json:"userlist"`
+	Owner    string   `json:"owner,omitempty"`
+	UserList []string `json:"userlist,omitempty"`
 }
 
 type ChatTextMessage struct {
 	Receiver *ChatReceiver `json:"receiver"`
-	Sender   string        `json:"sender"`
+	Sender   string        `json:"sender,omitempty"`
 	Msgtype  string        `json:"msgtype"`
 	Text     *ChatText     `json:"text"`
 }
@@ -52,8 +52,8 @@ func (a *API) CreateChat() error {
 	data, err := json.Marshal(Chat{
 		ChatId:   "1",
 		Name:     "测试会话",
-		Owner:    "xiaoxi__0525",
-		UserList: []string{"xiaoxi__0525", "uio257918", "yankebin001"},
+		Owner:    "xiaoxi___0525",
+		UserList: []string{"xiaoxi___0525", "uio257918", "yankebin001"},
 	})
 
 	_, err = a.Client.PostJSON(url, data)
