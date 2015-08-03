@@ -23,10 +23,10 @@ type Chat struct {
 }
 
 type ChatTextMessage struct {
-	Receiver Receiver `json: "receiver"`
-	Sender   string   `json: "sender"`
-	Msgtype  string   `json: "msgtype"`
-	Text     Text     `json: "text"`
+	Receiver ChatReceiver `json: "receiver"`
+	Sender   string       `json: "sender"`
+	Msgtype  string       `json: "msgtype"`
+	Text     ChatText     `json: "text"`
 }
 
 type ChatReceiver struct {
