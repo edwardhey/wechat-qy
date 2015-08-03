@@ -23,7 +23,7 @@ type Chat struct {
 }
 
 // CreateChat 方法用于创建微信聊天
-func (a *API) CreateChat(chat *Chat) error {
+func (a *API) CreateChat(ChatId string, Name string, Owner string, UserList []string) error {
 	token, err := a.Tokener.Token()
 	if err != nil {
 		return err
@@ -33,8 +33,12 @@ func (a *API) CreateChat(chat *Chat) error {
 	qs.Add("access_token", token)
 
 	url := createChatURL + "?" + qs.Encode()
-
-	data, err := json.Marshal(chat)
+	data, err := json.Marshal(Chat{
+		ChatId:   ChatId,
+		Name:     Name,
+		Owner:    Owner,
+		UserList: UserList,
+	})
 	if err != nil {
 		return err
 	}
