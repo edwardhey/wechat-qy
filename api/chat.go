@@ -16,26 +16,26 @@ const (
 )
 
 type Chat struct {
-	ChatId   string   `json: "chatid"`
-	Name     string   `json: "name"`
-	Owner    string   `json: "owner"`
-	UserList []string `json: "userlist"`
+	ChatId   string   `json:"chatid"`
+	Name     string   `json:"name"`
+	Owner    string   `json:"owner"`
+	UserList []string `json:"userlist"`
 }
 
 type ChatTextMessage struct {
-	Receiver *ChatReceiver `json: "receiver"`
-	Sender   string        `json: "sender"`
-	Msgtype  string        `json: "msgtype"`
-	Text     *ChatText     `json: "text"`
+	Receiver *ChatReceiver `json:"receiver"`
+	Sender   string        `json:"sender"`
+	Msgtype  string        `json:"msgtype"`
+	Text     *ChatText     `json:"text"`
 }
 
 type ChatReceiver struct {
-	Type string `json: "type"`
-	Id   string `json: "id"`
+	Type string `json:"type"`
+	Id   string `json:"id"`
 }
 
 type ChatText struct {
-	Content string `json: "content"`
+	Content string `json:"content"`
 }
 
 // CreateChat 方法用于创建微信聊天
