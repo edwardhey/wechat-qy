@@ -53,7 +53,7 @@ func (a *API) CreateChat() error {
 		ChatId:   "1",
 		Name:     "测试会话",
 		Owner:    "xiaoxi___0525",
-		UserList: []string{"xiaoxi___0525,uio257918,yankebin001"},
+		UserList: []string{"xiaoxi___0525", "uio257918", "yankebin001"},
 	})
 
 	_, err = a.Client.PostJSON(url, data)
