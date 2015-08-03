@@ -43,17 +43,18 @@ func (a *API) CreateChat(data string) error {
 	return err
 }
 
-func(a* API) SendTextMessage() error{
+func (a *API) SendTextMessage() error {
 	token, err := a.Tokener.Token()
-	if err != nil
+	if err != nil {
 		return err
+	}
 
 	qs := make(url.Values)
 	qs.Add("access_token", token)
 
-	url := sendChatURL + "?" +qs.Encode()
+	url := sendChatURL + "?" + qs.Encode()
 
-	_.err :=a.Client.PostJson(url, `"{
+	_, err = a.Client.PostJson(url, `"{
    "receiver":
    {
        "type": "single",
