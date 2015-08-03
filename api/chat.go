@@ -16,6 +16,7 @@ const (
 )
 
 type Chat struct {
+	ChatId   string   `json: "chatid"`
 	Name     string   `json: "name"`
 	Owner    string   `json: "owner"`
 	UserList []string `json: "userlist"`
