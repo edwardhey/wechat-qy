@@ -52,8 +52,8 @@ func (a *API) CreateChat() error {
 	data, err := json.Marshal(Chat{
 		ChatId:   "1",
 		Name:     "测试会话",
-		Owner:    "xiaoxi___0525",
-		UserList: []string{"xiaoxi___0525", "uio257918", "yankebin001"},
+		Owner:    "xiaoxi__0525",
+		UserList: []string{"xiaoxi__0525", "uio257918", "yankebin001"},
 	})
 
 	_, err = a.Client.PostJSON(url, data)
