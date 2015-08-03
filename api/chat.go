@@ -18,11 +18,11 @@ const (
 type Chat struct {
 	Name     string   `json: "name"`
 	Owner    string   `json: "owner"`
-	UserList []string `json:"userlist"`
+	UserList []string `json: "userlist"`
 }
 
 // CreateChat 方法用于创建微信聊天
-func (a *API) CreateChat(chat interface{}) error {
+func (a *API) CreateChat(chat Chat) error {
 	token, err := a.Tokener.Token()
 	if err != nil {
 		return err
