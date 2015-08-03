@@ -39,7 +39,7 @@ type ChatText struct {
 }
 
 // CreateChat 方法用于创建微信聊天
-func (a *API) CreateChat(chat *Chat) error {
+func (a *API) CreateChat() error {
 	token, err := a.Tokener.Token()
 	if err != nil {
 		return err
