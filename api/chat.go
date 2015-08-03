@@ -22,19 +22,19 @@ type Chat struct {
 	UserList []string `json: "userlist"`
 }
 
-type TextMessage struct {
+type ChatTextMessage struct {
 	Receiver Receiver `json: "receiver"`
 	Sender   string   `json: "sender"`
 	Msgtype  string   `json: "msgtype"`
 	Text     Text     `json: "text"`
 }
 
-type Receiver struct {
+type ChatReceiver struct {
 	Type string `json: "type"`
 	Id   string `json: "id"`
 }
 
-type Text struct {
+type ChatText struct {
 	Content string `json: "content"`
 }
 
@@ -71,14 +71,14 @@ func (a *API) SendTextMessage() error {
 
 	url := sendChatURL + "?" + qs.Encode()
 
-	data, err := json.Marshal(TextMessage{
-		Receiver: Receiver{
+	data, err := json.Marshal(ChatTextMessage{
+		Receiver: ChatReceiver{
 			Type: "single",
 			Id:   "uio257918",
 		},
 		Sender:  "xiaoxi___0525",
 		Msgtype: "text",
-		Text: Text{
+		Text: ChatText{
 			Content: "测试聊天",
 		},
 	})
