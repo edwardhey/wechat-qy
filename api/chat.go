@@ -74,9 +74,9 @@ func (a *API) SendTextMessage() error {
 	data, err := json.Marshal(ChatTextMessage{
 		Receiver: &ChatReceiver{
 			Type: "single",
-			Id:   "xiaoxi___0525",
+			Id:   "CTB",
 		},
-		Sender:  "xiaoxi___0525",
+		Sender:  "LZP",
 		Msgtype: "text",
 		Text: &ChatText{
 			Content: "测试聊天",
