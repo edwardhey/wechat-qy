@@ -23,10 +23,10 @@ type Chat struct {
 }
 
 type ChatTextMessage struct {
-	Receiver ChatReceiver `json: "receiver"`
-	Sender   string       `json: "sender"`
-	Msgtype  string       `json: "msgtype"`
-	Text     ChatText     `json: "text"`
+	Receiver *ChatReceiver `json: "receiver"`
+	Sender   string        `json: "sender"`
+	Msgtype  string        `json: "msgtype"`
+	Text     *ChatText     `json: "text"`
 }
 
 type ChatReceiver struct {
@@ -72,13 +72,13 @@ func (a *API) SendTextMessage() error {
 	url := sendChatURL + "?" + qs.Encode()
 
 	data, err := json.Marshal(ChatTextMessage{
-		Receiver: ChatReceiver{
+		Receiver: &ChatReceiver{
 			Type: "single",
-			Id:   "uio257918",
+			Id:   "xiaoxi___0525",
 		},
 		Sender:  "xiaoxi___0525",
 		Msgtype: "text",
-		Text: ChatText{
+		Text: &ChatText{
 			Content: "测试聊天",
 		},
 	})
