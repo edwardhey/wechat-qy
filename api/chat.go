@@ -83,6 +83,6 @@ func (a *API) SendTextMessage() error {
 		},
 	})
 
-	_, err = a.Client.PostJson(url, data)
+	_, err = a.Client.PostJSON(url, data)
 	return err
 }
