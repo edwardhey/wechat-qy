@@ -1,6 +1,7 @@
 package api
 
 import (
+	"encoding/json"
 	"net/url"
 )
 
@@ -21,8 +22,24 @@ type Chat struct {
 	UserList []string `json: "userlist"`
 }
 
+type TextMessage struct {
+	Receiver Receiver `json: "receiver"`
+	Sender   string   `json: "sender"`
+	Msgtype  string   `json: "msgtype"`
+	Text     Text     `json: "text"`
+}
+
+type Receiver struct {
+	Type string `json: "type"`
+	Id   string `json: "id"`
+}
+
+type Text struct {
+	Content string `json: "content"`
+}
+
 // CreateChat 方法用于创建微信聊天
-func (a *API) CreateChat(data string) error {
+func (a *API) CreateChat(chat *Chat) error {
 	token, err := a.Tokener.Token()
 	if err != nil {
 		return err
@@ -32,12 +49,12 @@ func (a *API) CreateChat(data string) error {
 	qs.Add("access_token", token)
 
 	url := createChatURL + "?" + qs.Encode()
-	// data, err := json.Marshal(Chat{
-	// 	ChatId:   ChatId,
-	// 	Name:     Name,
-	// 	Owner:    Owner,
-	// 	UserList: UserList,
-	// })
+	data, err := json.Marshal(Chat{
+		ChatId:   "1",
+		Name:     "测试会话",
+		Owner:    "xiaoxi___0525",
+		UserList: "xiaoxi___0525,uio257918",
+	})
 
 	_, err = a.Client.PostJSON(url, data)
 	return err
@@ -54,18 +71,18 @@ func (a *API) SendTextMessage() error {
 
 	url := sendChatURL + "?" + qs.Encode()
 
-	_, err = a.Client.PostJson(url, `"{
-   "receiver":
-   {
-       "type": "single",
-       "id": "uio257918"
-   },
-   "sender": "xiaoxi___0525",
-   "msgtype": "text",
-   "text":
-   {
-       "content": "测试"
-   }
-}"`)
+	data, err := json.Marshal(TextMessage{
+		Receiver: Receiver{
+			Type: "single",
+			Id:   "uio257918",
+		},
+		Sender:  "xiaoxi___0525",
+		Msgtype: "text",
+		Text: Text{
+			Content: "测试聊天",
+		},
+	})
+
+	_, err = a.Client.PostJson(url, data)
 	return err
 }
