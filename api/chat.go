@@ -72,15 +72,3 @@ func (a *API) SendTextMessage(chatTextMessage *ChatTextMessage) error {
 	_, err = a.Client.PostJSON(url, data)
 	return err
 }
-
-// ChatTextMessage{
-// 		Receiver: &ChatReceiver{
-// 			Type: "single",
-// 			Id:   toUser,
-// 		},
-// 		Sender:  fromUser,
-// 		Msgtype: "text",
-// 		Text: &ChatText{
-// 			Content: content,
-// 		},
-// 	}
