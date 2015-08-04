@@ -3,7 +3,6 @@ package api
 import (
 	"encoding/json"
 	"net/url"
-	"time"
 )
 
 const (
@@ -40,7 +39,7 @@ type ChatText struct {
 }
 
 // CreateChat 方法用于创建微信聊天
-func (a *API) CreateChat(chatTitle string, chatOwner string, chatUserlist []string) error {
+func (a *API) CreateChat(chat *Chat) error {
 	token, err := a.Tokener.Token()
 	if err != nil {
 		return err
@@ -53,18 +52,13 @@ func (a *API) CreateChat(chatTitle string, chatOwner string, chatUserlist []stri
 
 	chatId := time.Now().UnixNano().(string) + chatOwner
 
-	data, err := json.Marshal(Chat{
-		ChatId:   chatId,
-		Name:     chatTitle,
-		Owner:    chatOwner,
-		UserList: chatUserlist,
-	})
+	data, err := json.Marshal(chat)
 
 	_, err = a.Client.PostJSON(url, data)
 	return err
 }
 
-func (a *API) SendTextMessage(toUser string, fromUser string, content string) error {
+func (a *API) SendTextMessage(chatTextMessage *ChatTextMessage) error {
 	token, err := a.Tokener.Token()
 	if err != nil {
 		return err
@@ -75,18 +69,20 @@ func (a *API) SendTextMessage(toUser string, fromUser string, content string) er
 
 	url := sendChatURL + "?" + qs.Encode()
 
-	data, err := json.Marshal(ChatTextMessage{
-		Receiver: &ChatReceiver{
-			Type: "single",
-			Id:   toUser,
-		},
-		Sender:  fromUser,
-		Msgtype: "text",
-		Text: &ChatText{
-			Content: content,
-		},
-	})
+	data, err := json.Marshal(chatTextMessage)
 
 	_, err = a.Client.PostJSON(url, data)
 	return err
 }
+
+// ChatTextMessage{
+// 		Receiver: &ChatReceiver{
+// 			Type: "single",
+// 			Id:   toUser,
+// 		},
+// 		Sender:  fromUser,
+// 		Msgtype: "text",
+// 		Text: &ChatText{
+// 			Content: content,
+// 		},
+// 	}
