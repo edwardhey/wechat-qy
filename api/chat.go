@@ -50,8 +50,6 @@ func (a *API) CreateChat(chat *Chat) error {
 
 	url := createChatURL + "?" + qs.Encode()
 
-	chatId := time.Now().UnixNano().(string) + chatOwner
-
 	data, err := json.Marshal(chat)
 
 	_, err = a.Client.PostJSON(url, data)
