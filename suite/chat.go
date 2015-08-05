@@ -30,18 +30,3 @@ type Suite struct {
 	tokener        *base.Tokener
 	client         *base.Client
 }
-
-func (s *Suite) GetChatAuthURI(appIDs []int, redirectURI, state string) (string, error) {
-	preAuthCodeInfo, err := s.getPreAuthCode(appIDs)
-	if err != nil {
-		return "", err
-	}
-
-	qs := url.Values{}
-	qs.Add("suite_id", s.id)
-	qs.Add("pre_auth_code", preAuthCodeInfo.Code)
-	qs.Add("redirect_uri", redirectURI)
-	qs.Add("state", state)
-
-	return authURI + "?" + qs.Encode(), nil
-}
