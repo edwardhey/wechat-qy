@@ -1,9 +1,6 @@
 package suite
 
 import (
-	"encoding/json"
-	"encoding/xml"
-	"fmt"
 	"net/url"
 
 	"github.com/KonishiLee/wechat-crypter"
