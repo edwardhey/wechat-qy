@@ -6,8 +6,8 @@ import (
 	"fmt"
 	"net/url"
 
-	"github.com/KonishiLee/wechat-crypter"
-	"github.com/KonishiLee/wechat-qy/base"
+	"github.com/edwardhey/wechat-crypter"
+	"github.com/edwardhey/wechat-qy/base"
 )
 
 // 应用套件相关操作的 API 地址

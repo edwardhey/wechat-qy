@@ -4,7 +4,7 @@ import (
 	"encoding/xml"
 	"fmt"
 
-	"github.com/KonishiLee/wechat-qy/base"
+	"github.com/edwardhey/wechat-qy/base"
 )
 
 // 接收事件类型

@@ -1,8 +1,8 @@
 package suite
 
 import (
-	"github.com/KonishiLee/wechat-qy/api"
-	"github.com/KonishiLee/wechat-qy/base"
+	"github.com/edwardhey/wechat-qy/api"
+	"github.com/edwardhey/wechat-qy/base"
 )
 
 // API 封装基于套件的接口调用

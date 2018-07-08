@@ -1,6 +1,6 @@
 // 企业微信号 API 的 Golang 版本
 //
-// github.com/KonishiLee/wechat-qy
+// github.com/edwardhey/wechat-qy
 //
 // @author  Heroic Yang <me@heroicyang.com>
 //
@@ -8,5 +8,5 @@
 package wechat
 
 import (
-	_ "github.com/KonishiLee/wechat-qy/suite"
+	_ "github.com/edwardhey/wechat-qy/suite"
 )

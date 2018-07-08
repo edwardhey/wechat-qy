@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"net/url"
 
-	"github.com/KonishiLee/wechat-qy/base"
+	"github.com/edwardhey/wechat-qy/base"
 )
 
 const (

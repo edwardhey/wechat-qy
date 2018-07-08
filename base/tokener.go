@@ -7,16 +7,19 @@ type TokenFetcher interface {
 	FetchToken() (token string, expiresIn int64, err error)
 }
 
+type TokenSaver func(token string, expirsIn int64) error
+
 // Tokener 用于管理应用套件或企业号的令牌信息
 type Tokener struct {
 	token        string
 	expiresIn    int64
 	tokenFetcher TokenFetcher
+	tokenSaver   TokenSaver
 }
 
 // NewTokener 方法用于创建 Tokener 实例
-func NewTokener(tokenFetcher TokenFetcher) *Tokener {
-	return &Tokener{tokenFetcher: tokenFetcher}
+func NewTokener(tokenFetcher TokenFetcher, tokenSaver TokenSaver) *Tokener {
+	return &Tokener{tokenFetcher: tokenFetcher, tokenSaver: tokenSaver}
 }
 
 // Token 方法用于获取应用套件令牌
@@ -42,7 +45,8 @@ func (t *Tokener) RefreshToken() error {
 	t.token = token
 	t.expiresIn = expiresIn
 
-	return nil
+	return t.tokenSaver(t.token, t.expiresIn)
+	// return nil
 }
 
 func (t *Tokener) isValidToken() bool {

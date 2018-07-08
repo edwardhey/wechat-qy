@@ -4,8 +4,8 @@ import (
 	"encoding/json"
 	"net/url"
 
-	"github.com/KonishiLee/wechat-crypter"
-	"github.com/KonishiLee/wechat-qy/base"
+	crypter "github.com/KonishiLee/wechat-crypter"
+	"github.com/edwardhey/wechat-qy/base"
 )
 
 const (
@@ -22,7 +22,7 @@ type API struct {
 }
 
 // New 方法创建 API 实例
-func New(corpID, corpSecret, token, encodingAESKey string) *API {
+func New(corpID, corpSecret, token, encodingAESKey string, tokenSaver base.TokenSaver) *API {
 	msgCrypter, _ := crypter.NewMessageCrypter(token, encodingAESKey, corpID)
 
 	api := &API{
@@ -32,7 +32,7 @@ func New(corpID, corpSecret, token, encodingAESKey string) *API {
 	}
 
 	api.Client = base.NewClient(api)
-	api.Tokener = base.NewTokener(api)
+	api.Tokener = base.NewTokener(api, tokenSaver)
 
 	return api
 }
